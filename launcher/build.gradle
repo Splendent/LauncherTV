@@ -16,6 +16,7 @@
  */
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.github.kt3k.coveralls'
 apply plugin: 'checkstyle'
 
@@ -40,13 +41,13 @@ task checkstyle(type: Checkstyle) {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    compileSdkVersion 30
+    buildToolsVersion '30.0.1'
 
-    lintOptions {
-        abortOnError true
-        lintConfig file('lint.xml')
-    }
+//    lintOptions {
+//        abortOnError true
+//        lintConfig file('lint.xml')
+//    }
 
     defaultConfig {
         applicationId "org.cosinus.launchertv"
@@ -89,6 +90,7 @@ android {
 
 dependencies {
     compile 'com.android.support:appcompat-v7:25.4.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 coveralls {
@@ -98,4 +100,8 @@ coveralls {
 tasks.coveralls {
     dependsOn 'connectedAndroidTest'
     onlyIf { System.env.'CI' }
+}
+repositories {
+    maven { url 'https://dl.bintray.com/kotlin/kotlin-eap' }
+    mavenCentral()
 }

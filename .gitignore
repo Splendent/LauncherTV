@@ -48,3 +48,6 @@ captures/
 # Build scripts
 beforebuild.sh
 build.sh
+.idea/*
+/.idea/caches/build_file_checksums.ser
+/.idea/.name
