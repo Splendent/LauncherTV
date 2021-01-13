@@ -142,11 +142,8 @@ class ApplicationFragment : Fragment(), View.OnClickListener, View.OnLongClickLi
             for (x in 0 until mGridX) {
                 val av = ApplicationView(getContext())
                 av.setOnClickListener(this)
-                //SP: bad
-                if (x != 0) {
-                    av.setOnLongClickListener(this)
-                    av.setOnMenuOnClickListener(View.OnClickListener { v -> onLongClick(v) })
-                }
+                av.setOnLongClickListener(this)
+                av.setOnMenuOnClickListener(View.OnClickListener { v -> onLongClick(v) })
                 av.position = position++
                 av.showName(showNames)
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
